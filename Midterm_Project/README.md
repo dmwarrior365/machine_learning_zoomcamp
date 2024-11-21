@@ -1,53 +1,59 @@
-# Learn World Air Quality Index (AQI) through Machine Learning Project
+# Oil Production Prediction Using Volve Datasets
 
 ## Project Description
-Air quality is a critical component of environmental health, and many cities worldwide face challenges in maintaining acceptable Air Quality Index (AQI) levels throughout the year. Seasonal changes, industrial activities, and various environmental factors cause fluctuations in AQI, with significant implications for public health and well-being. By predicting the annual average AQI based on historical monthly patterns, environmental agencies, policymakers, and the general public can better understand these trends, enabling timely actions to improve air quality and protect public health.
-
-However, the dataset is limited to the rank of the city based on the average pollution levels and the average pollution measurement for the year. Any factors that could potentially affect the analysis should not be available in the current dataset.
+The production department plays a crucial role in monitoring production performance in the oil and gas industry. This involves tracking data from sensors that measure bottom hole pressure, tubing pressure, wellhead pressure, and other important parameters.
+The goal of this project is to develop a data-driven approach through a predictive model for oil production using the publicly available Volve datasets. The Volve is a hydrocarbon reservoir located in the Norwegian North Sea. It was operational from 2005 to 2016 and achieved a recovery rate of 54%. Equinor has made all field data available to benefit students, providing opportunities for research and new insights.
+By analyzing the historical production and operational data from the Volve datasets, the project aims to identify key factors that influence oil output and to create a model that can predict future production levels.
 
 ## Objective and Methods
-The main objective of this project is to develop a predictive model that estimates the annual average Air Quality Index (AQI) based on monthly AQI values. By understanding how monthly AQI fluctuations contribute to the yearly average, the model will provide insights into seasonal AQI patterns and support decision-making for air quality management. Additionally, this project aims to forecast future AQI trends based on historical monthly data, allowing cities to address air quality concerns.
-
-In terms of methodology, the project will try to build and test several regression models, from Random Forest, Linear Regression, and KNN to the Ensemble method (XGBoost). It will compare each model's performance against the dataset.
+The project's objective is to predict daily oil production volumes based on historical production data and operational parameters. The model will also be used to identify critical operational factors impacting oil production.
+The methods will use regression-based machine learning models, including Gradient Boosting (XGBoost) and linear regression to predict oil production. To get the model, the process sequences are as follows:
+    - Clean and prepare the dataset, including handling missing values and feature engineering
+    - Identify and address anomalies in the data
+    - Perform correlation and understanding of the distribution and trends of the features in the dataset
+    - Split dataset to train and test dataset, then apply machine learning models
+    - Extract model and run as web service with Docker and Flask
 
 ## Data Description
-The dataset includes AQI data for various cities, with each city ranked based on its AQI. Key features in the dataset are:
+The dataset has 24 columns with two types available: string and float types. Some key variables including:
 
-- Monthly AQI values (jan-dec): AQI readings for each month, representing air quality variations across the year.
-- Average AQI (avg): The target variable representing the yearly average AQI for each city, used as primary measure of air quality.
+- Production data: Daily production rates of oil, gas, and water
+- Reservoir parameter: pressure, temperature
+- Operational data: injection rates, choke settings
+- Temporal data: timestamp
+- Well Information: borehole code, well name
 
-During the process, there will be two exported datasetsincluding train data (csv) and test (csv). The train data will be used for training and tuning the models, whilst the test data used for testing the performance of the final selected model.
+During the development, some of the variable might not be used for the modeling to prevent any data leakage to the model.
 
-## Environment Configure 
-- Installing virtual Env
+## Environment Configure
+### Setting Up a Virtual Environment
+- Install Pipenv as for the virtual environment
     - pip install pipenv 
 
-- Installing Packages
-    - pipenv install jupyter notebook pandas numpy matplotlib seaborn scikit-learn xgboost 
+### Installing Required Packages
+    - pipenv install jupyter notebook pandas numpy matplotlib seaborn scikit-learn xgboost shap flask gunicorn
 
-- Starting Virtual Env
+### Activating the Virtual Environment
     - pipenv shell 
 
-- Starting Notebook
+### (Testing) the Flask Web Service
+    - python app.py
+
+### Running a Jupyter Notebook or run the script to input the new testing data
+- For Notebook
     - jupyter-notebook
 
-- Starting the flask web service
-    - Install the flask library
-        - pipenv install Flask
-    - python predict.py
+- For the script to test
+    - python new_prediction_script.py 
 
-- Testing the deployed flast web service
-    - python generator_prediction_serving.py 
+### Deployed the Model as Model Service with Gunicorn
+- pipenv run gunicorn --bind 0.0.0.0:9696 app:app
 
-- Running the deployed app with Gunicorn
-    - Installing the Gunicorn library
-        - pipenv install gunicorn
-
-    - pipenv run gunicorn --bind 0.0.0.0:9696 predict:app
-
-- Starting Docker service on Linux (fedora)
+- Make sure the Docker is running or start the Docker service on Linux (ubuntu)
     - sudo systemctl start docker
-- Building the dockerized contained
-    - docker build -t generator-failure-prediction . 
-- Using the image to start a docker container
-    - docker run -it -p 9696:9696 generator-failure-prediction:latest
+
+- Building the Dockerized Container from Dockerfile
+    - docker build -t volve-production-prediction . 
+
+- Running the Docker
+    - docker run -it -p 9696:9696 volve-production-prediction:latest
