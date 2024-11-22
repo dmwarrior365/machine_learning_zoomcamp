@@ -25,6 +25,15 @@ The dataset has 24 columns with two types available: string and float types. Som
 
 During the development, some of the variable might not be used for the modeling to prevent any data leakage to the model.
 
+## How to Download the data
+The Volve dataset can be found in Kaggle Datasets. The steps are as follows:
+- Install Kaggle library
+    - pip install kaggle
+
+1. In the jupyter notebook, run the first code: !kaggle datasets download lamyalbert/volve-production-data
+
+2. The data will be downloaded in Zip format. To Unzip the file, you can use this code: !unzip volve-production-data.zip -d <folder-target-location>
+
 ## Environment Configure
 ### Setting Up a Virtual Environment
 - Install Pipenv as for the virtual environment
@@ -53,7 +62,7 @@ During the development, some of the variable might not be used for the modeling 
     - sudo systemctl start docker
 
 - Building the Dockerized Container from Dockerfile
-    - docker build -t volve-production-prediction . 
+    - docker build -t volve-prediction . 
 
 - Running the Docker
-    - docker run -it -p 9696:9696 volve-production-prediction:latest
+    - docker run -it -p 9696:9696 volve-prediction:latest
