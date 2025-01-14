@@ -18,10 +18,7 @@ def test_api():
         'cylinders': 4,
         'transmission': 'AS5',
         'fuel_type': 'Z',
-        'fuel_consumption_city_(l/100_km)': 9.9,
-        'fuel_consumption_hwy_(l/100_km)': 6.7,
-        'fuel_consumption_comb_(l/100_km)': 8.5,
-        'fuel_consumption_comb_(mpg)': 33
+        'fuel_efficiency': 9.9
     }
 
     # Test prediction endpoint
