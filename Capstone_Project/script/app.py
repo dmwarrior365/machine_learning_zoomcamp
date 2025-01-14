@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import numpy as np
 import pickle
 
-with open('xgb_model.pkl', 'rb') as model_file:
+with open('xgb_best_model.pkl', 'rb') as model_file:
     model = pickle.load(model_file)
     
 # App
@@ -17,9 +17,9 @@ def predict():
     
     predictions = model.predict(input_features)
     
-    oil_rate, water_rate = predictions[0]
+    co2_emission_rate = predictions[0]
     
-    return jsonify({"oil_rate": oil_rate, "water_rate": water_rate})
+    return jsonify({"co2_emission_rate": co2_emission_rate})
 
 if __name__ == '__main__':
     app.run(debug=True)
