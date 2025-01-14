@@ -16,6 +16,7 @@ flask = "*"
 notebook = "*"
 jupyter = "*"
 matplotlib = "*"
+flask-cors = "*"
 
 [dev-packages]
 

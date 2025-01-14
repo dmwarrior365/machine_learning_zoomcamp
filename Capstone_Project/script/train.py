@@ -128,6 +128,7 @@ def objective(params):
 
 df = pd.read_csv('/workspaces/machine_learning_zoomcamp/Capstone_Project/data/CO2_Emissions_Canada.csv')
 df_clean = df[df['fuel_type'] != "N"]
+df_clean['fuel_efficiency'] = (df_clean['fuel_consumption_city_(l/100_km)'] + df_clean['fuel_consumption_hwy_(l/100_km)']) / 2
 
 categorical_columns = df_clean.select_dtypes(include=['object']).columns
 # Apply one-hot encoding

@@ -58,15 +58,9 @@ In this, I have tested RobustScaler and no scaler at all, the ones that have bet
 * KNN
 * SVM
 * XGBoost
-* CatBoost
-* Neural Network
-
   <br/>
-  
-The final output of the mode is saved as pickle file as [xgboost_best_model.pkl](xgboost_best_model.pkl) and trial for the second model using neural network [nn_model.pkl](nn_model.pkl). To use the model and perfrom a prediction with new dataset, please use [predict.py]([predict.py)
-
+The final output of the mode is saved as pickle file as [xgboost_best_model.pkl](xgboost_best_model.pkl) and additional label encoder also provided [label_encoders.pkl](label_encoders.pkl). To use the model and perfrom a prediction with new dataset, please use [predict.py]([predict.py)
   <br/>
-
 ### Analysis Interaction
 To test the data and do some analysis, you can use the Jupyter Notebook [development/Notebook.ipynb](development/Notebook.ipynb) and to run it without Jupyter Notebook, you can use the train.py [script/train.py](script/train.py) 
 
@@ -75,9 +69,7 @@ To test the data and do some analysis, you can use the Jupyter Notebook [develop
 ### Local deployment using Docker and Flask
 
 Flask application is deployed to predict [predict.py](predict.py). This file receives the data as JSON string through POST via HTTP, under /predict through port 9696. It outputs a JSON string containing one output boolean variable 
-
  <br/>
-
 How to run the Flask using Docker, you can follow below instructions:
 
 - pipenv run gunicorn --bind 0.0.0.0:9696 app:app
@@ -123,6 +115,9 @@ pip install pipenv
 ```
 python -m pip install pipenv
 ```
+
+#### Secret Key for PythonAnywhere
+
 
 #### Setup Pipenv in PythonAnywhere
 ```

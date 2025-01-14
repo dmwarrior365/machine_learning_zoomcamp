@@ -8,7 +8,11 @@ COPY ["Pipfile", "Pipfile.lock", "./"]
 
 RUN pipenv install --deploy --system
 
-COPY ["*.py", "xgboost_best_model.pkl", "nn_model.pkl", "./"]
+COPY *.py ./
+
+COPY xgboost_best_model.pkl ./
+
+COPY label_encoders.pkl ./
 
 EXPOSE 9696
 
