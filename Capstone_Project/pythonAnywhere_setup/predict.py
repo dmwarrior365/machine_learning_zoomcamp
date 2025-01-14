@@ -1,7 +1,7 @@
 import requests
 from preprocessing import DataPreprocessor
 
-base_url = 'https://rdtgeo65.pythonanywhere.com/'
+base_url = 'https://<username>.pythonanywhere.com/'
 
 def check_health():
     """Check the health status of the API"""
