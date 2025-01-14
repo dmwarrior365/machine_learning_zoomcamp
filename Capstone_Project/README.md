@@ -61,7 +61,9 @@ In this, I have tested RobustScaler and no scaler at all, the ones that have bet
   <br/>
 The final output of the mode is saved as pickle file as [xgboost_best_model.pkl](xgboost_best_model.pkl) and additional label encoder also provided [label_encoders.pkl](label_encoders.pkl). To use the model and perfrom a prediction with new dataset, please use [predict.py]([predict.py)
   <br/>
+
 ### Analysis Interaction
+
 To test the data and do some analysis, you can use the Jupyter Notebook [development/Notebook.ipynb](development/Notebook.ipynb) and to run it without Jupyter Notebook, you can use the train.py [script/train.py](script/train.py) 
 
 ## Part 2: Deployment
@@ -86,7 +88,7 @@ How to run the Flask using Docker, you can follow below instructions:
 ### Cloud deployment using PythonAnywhere
 #### Step-by-Step Guide
 
-For cloud deployment approach, I tried to use https://www.pythonanywhere.com/ (paid version to get one web app custom domain but there is remain free option ). 
+For cloud deployment approach, I tried to use https://www.pythonanywhere.com/ (paid version to get one web app custom domain but there is remain free option ). For testing purposes, the url of this project is [https://rdtgeo65.pythonanywhere.com](https://rdtgeo65.pythonanywhere.com).
 
 1. You need to log in and register to the PythonAnywhere
 2. After successful registration, you will have a dashboard and items to make a   Notebook, Console, and web app. You need to create a new web app by 'clicking Add a new web   
